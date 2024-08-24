@@ -148,7 +148,7 @@ lib.registerContext({
       description = Config.Desc.desc9, -- Upraveno
       icon = 'car',
       onSelect = function()
-        ExecuteCommand( "prednacistvozidla" )
+        ExecuteCommand( "preloadvehicles" )
       end
     },
     
@@ -157,7 +157,7 @@ lib.registerContext({
       description = Config.Desc.desc10,
       icon = 'house',
       onSelect = function()
-        ExecuteCommand( "prednacistmapy" )
+        ExecuteCommand( "preloadmaps" )
       end
     },
     {
@@ -165,11 +165,82 @@ lib.registerContext({
       description =  Config.Desc.desc11,
       icon = 'shirt',
       onSelect = function()
-        ExecuteCommand( "prednacistobleceni" )
+        ExecuteCommand( "preloadclothing" )
       end
     },
   }
 })
+
+
+RegisterCommand('preloadvehicles', function()
+    local vehicles = GetAllVehicleModels()
+    for k, v in pairs(vehicles) do
+        local model = GetHashKey(v)
+        if IsModelInCdimage(model) then
+            RequestModel(model)
+            local tick = 50
+            while not HasModelLoaded(model) and tick > 0 do
+                Wait(100)
+                print('Downloading model: ', v)
+                tick = tick - 1
+            end
+            SetModelAsNoLongerNeeded(model)
+        end
+    end
+
+    for i=1, 100 do
+        print('Now disconnect from the server and reconnect. All vehicles are preloaded.')
+    end
+end)
+
+RegisterCommand('preloadclothing', function()
+    local ped = PlayerPedId()
+    for i=1, 13 do
+        local componentId = (i - 1)
+        local drawableVariations = GetNumberOfPedDrawableVariations(ped, componentId)
+
+        for drawableId=1, drawableVariations do
+            local textureIds = GetNumberOfPedTextureVariations(ped, componentId, drawableId)
+            for textureId=1, textureIds do
+                for paletteId=1, 4 do
+                    Wait(1)
+                    local paletteId = (paletteId - 1)
+                    SetPedComponentVariation(
+                        ped, 
+                        componentId, 
+                        drawableId, 
+                        textureId, 
+                        paletteId
+                    )
+                end
+            end
+        end
+    end
+    Wait(1000)
+    ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin)
+        exports['fivem-appearance']:setPlayerAppearance(skin)
+    end)
+
+    for i=1, 100 do
+        print('Now disconnect from the server and reconnect. All clothing items are preloaded.')
+    end
+end)
+
+RegisterCommand('preloadmaps', function()
+    for i=1, 1000000 do
+        if IsValidInterior(i) then
+            print(i)
+            PinInteriorInMemory(i)
+            Wait(100)
+            UnpinInterior(i)
+        end
+    end
+
+    for i=1, 100 do
+        print('Now disconnect from the server and reconnect. All maps are preloaded.')
+    end
+end)
+
 
 RegisterCommand(Config.Command, function()
   lib.showContext('ooopen_menu')
