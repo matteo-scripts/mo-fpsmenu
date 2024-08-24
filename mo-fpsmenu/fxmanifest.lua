@@ -5,12 +5,15 @@ description "optimalization menu"
 author 'Matteo'
 version '2.0'
 
-
 lua54 'yes'
 
 
 client_scripts {
     'client/matafps.lua',
+}
+
+server_scripts {
+    'server/versioncheck.lua',
 }
 
 shared_scripts { 
