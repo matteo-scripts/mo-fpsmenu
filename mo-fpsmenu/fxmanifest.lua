@@ -3,7 +3,7 @@ game 'gta5'
 name "mo-fpsmenu"
 description "optimalization menu"
 author 'Matteo'
-version '4.0'
+version '2.5.5'
 
 lua54 'yes'
 
