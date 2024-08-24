@@ -1,3 +1,4 @@
+
 -- Script Version Checker
 local localVersion = GetResourceMetadata(GetCurrentResourceName(), 'version')
 local fxManifestUrl = "https://raw.githubusercontent.com/matteo-scripts/mo-fpsmenu/main/mo-fpsmenu/fxmanifest.lua"
@@ -5,7 +6,7 @@ local fxManifestUrl = "https://raw.githubusercontent.com/matteo-scripts/mo-fpsme
 local function extractVersion(fxManifestContent)
     for line in string.gmatch(fxManifestContent, "[^\r\n]+") do
         if line:find("^version%s+'(.-)'$") then
-            return line:match("^version%s+'(.-)'$"):gsub("%s+", "") -- Trim white spaces
+            return line:match("^version%s+'(.-)'$")
         end
     end
     return nil
@@ -14,24 +15,21 @@ end
 local function checkForUpdates()
     PerformHttpRequest(fxManifestUrl, function(statusCode, response, headers)
         print([[^4
-╔──────────────────────────────────────────╗
-|               MO-SCRIPTS                |
-╚──────────────────────────────────────────╝
-                            ]])
+╔───────────────────────────────────────────────────────────────────────╗
+  ____  ______   __          ____   ___  ______   ______    _    __  __ 
+ / ___||  _ \ \ / /         | __ ) / _ \|  _ \ \ / / ___|  / \  |  \/  |
+ \___ \| |_) \ V /   _____  |  _ \| | | | | | \ V / |     / _ \ | |\/| |
+  ___) |  __/ | |   |_____| | |_) | |_| | |_| || || |___ / ___ \| |  | |
+ |____/|_|    |_|           |____/ \___/|____/ |_| \____/_/   \_\_|  |_|
+
+╚───────────────────────────────────────────────────────────────────────╝
+                        ]])
         if statusCode == 200 then
             local remoteVersion = extractVersion(response)
-            if not remoteVersion then
-                print("^1Failed to extract version from the remote manifest.")
-                return
-            end
-            
-            print("^5Remote Version: ^3" .. remoteVersion)  -- Debug: Print remote version
-            print("^5Local Version: ^3" .. localVersion)    -- Debug: Print local version
-            
             if remoteVersion and remoteVersion ~= localVersion then
-                print("^2NEW UPDATE: ^2" .. remoteVersion .. "^3 | ^1CURRENT: " .. localVersion .. " ^9>> Download new version from GitHub")
+                print("^2NEW UPDATE: ^2" .. remoteVersion .. "^3 | ^1CURRENT: " .. localVersion.." ^9>> Download new version from github")
             else
-                print("^2You are on the latest version: ^2" .. localVersion)
+                print("^2You are on latest version: ^2" .. localVersion)
             end
         else
             print("^1Failed to check for updates. Status code: " .. statusCode)
