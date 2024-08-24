@@ -53,4 +53,4 @@ You can install the script using one of the following methods:
    ```bash
    ensure mo-fpsmenu
 
-![Popis obrázku](https://cdn.discordapp.com/attachments/1261830609039392869/1276936465116303460/image.png?ex=66cb5741&is=66ca05c1&hm=13ba01e85b6f9e936772c3093bb1d1cfb99534375101ce4a8ecce8fbfd95d3ad&)
+![PREVIEW](https://cdn.discordapp.com/attachments/1261830609039392869/1276940067172257853/Navrh_bez_nazvu_4.png?ex=66cb5a9c&is=66ca091c&hm=1ad62c59a2d77d4f07de07f6f266582c98f21390d4914b9a0961c552c7e156cd&)
