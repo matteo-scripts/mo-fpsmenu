@@ -50,5 +50,5 @@ You can install the script using one of the following methods:
 2. Upload the script files to your game server’s resource directory.
 
 3. Register the script in your server.cfg file by adding the following line:
-4. ```bash
-5. ensure mo-fpsmenu
+   ```bash
+   ensure mo-fpsmenu
