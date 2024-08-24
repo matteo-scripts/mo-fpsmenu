@@ -52,3 +52,5 @@ You can install the script using one of the following methods:
 3. Register the script in your server.cfg file by adding the following line:
    ```bash
    ensure mo-fpsmenu
+
+![Popis obrázku](https://cdn.discordapp.com/attachments/1261830609039392869/1276936465116303460/image.png?ex=66cb5741&is=66ca05c1&hm=13ba01e85b6f9e936772c3093bb1d1cfb99534375101ce4a8ecce8fbfd95d3ad&)
