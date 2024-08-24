@@ -1,6 +1,6 @@
 # Game Optimization Script
 
-This script provides a set of tools to optimize game performance, focusing primarily on improving FPS (Frames Per Second) by adjusting various in-game settings. The script is designed with a default language of English but can easily be modified to support other languages.
+This script provides a set of tools to optimize game performance, focusing primarily on improving FPS (Frames Per Second) by adjusting various in-game settings. The script is designed with a default language of Czech but can easily be modified to support other languages.
 
 ## Features
 
@@ -35,6 +35,20 @@ Each menu option is accompanied by a description to help users understand its fu
 
 ## Installation
 
+You can install the script using one of the following methods:
+
+### Method 1: Cloning the Repository
+
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/game-optimization-script.git
+
+### Method 2: Uploading to the Server
+
+1. Download the script files from the repository.
+
+2. Upload the script files to your game server’s resource directory.
+
+3. Register the script in your server.cfg file by adding the following line:
+4. ```bash
+5. ensure mo-fpsmenu
