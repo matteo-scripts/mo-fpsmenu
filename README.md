@@ -1,6 +1,6 @@
 # Game Optimization Script
 
-This script provides a set of tools to optimize game performance, focusing primarily on improving FPS (Frames Per Second) by adjusting various in-game settings. The script is designed with a default language of Czech but can easily be modified to support other languages.
+This script provides a set of tools to optimize game performance, focusing primarily on improving FPS (Frames Per Second) by adjusting various in-game settings. The script is designed with a default language of English but can easily be modified to support other languages.
 
 ## Features
 
