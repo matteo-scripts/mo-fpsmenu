@@ -42,7 +42,7 @@ You can install the script using one of the following methods:
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/game-optimization-script.git
-
+   
 ### Method 2: Uploading to the Server
 
 1. Download the script files from the repository.
